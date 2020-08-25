@@ -1,0 +1,7 @@
+@import "./variables.css";
+
+body {
+  background-color: var(--color-white-bis);
+  font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--color-gray-darker);
+}
