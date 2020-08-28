@@ -20,6 +20,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 # A set of common locale data and translations to internationalize and/or localize your Rails applications.
 gem 'rails-i18n', '~> 6.0'
+# A library for generating fake data such as names, addresses, and phone numbers.
+gem 'faker', '~> 1.6', '>= 1.6.6'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -31,6 +33,11 @@ gem 'rails-i18n', '~> 6.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # TDD
+  gem 'capybara', '>= 2.15'
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
+  gem 'rspec-rails', '3.8'
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -43,11 +50,10 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # Strategies for cleaning databases. Can be used to ensure a clean state for testing.
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
