@@ -18,6 +18,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# A set of common locale data and translations to internationalize and/or localize your Rails applications.
+gem 'rails-i18n', '~> 6.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

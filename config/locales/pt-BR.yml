@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    attributes:
+      default: &default
+        created_at:  'Criado em'
+        updated_at:  'Atualizado em'
+
+      doctor: 
+        <<: *default
+        name:   'Nome'
+        crm:    'CRM' 
+        crm_uf: 'CRM UF' 
