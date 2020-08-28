@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'doctors#index'
-  resources :doctors
+  root 'home#index'
+  resources :doctors, only: %i[create update destroy]
 end
