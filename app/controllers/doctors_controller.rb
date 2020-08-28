@@ -39,7 +39,11 @@ class DoctorsController < ApplicationController
   private
 
   def doctor
-    @doctor = Doctor.find(params[:id])
+    @doctor = doctor_find
+  end
+
+  def doctor_find
+    params[:id].eql?('doctor') ? Doctor.find(params[:doctor][:id]) : Doctor.find(params[:id])
   end
 
   def doctor_params
