@@ -2,28 +2,16 @@
 
 # Controller to Doctors
 class DoctorsController < ApplicationController
-  before_action :doctor, only: %i[show edit update destroy]
-
-  def index
-    @doctors = Doctor.all
-  end
-
-  def show; end
-
-  def new
-    @doctor = Doctor.new
-  end
-
-  def edit; end
+  before_action :doctor, only: %i[update destroy]
 
   def create
     @doctor = Doctor.new(doctor_params)
 
     respond_to do |format|
       if @doctor.save
-        format.html { redirect_to doctors_path, notice: 'Doutor criado com sucesso!' }
+        format.html { redirect_to root_path, notice: 'Doutor criado com sucesso!' }
       else
-        format.html { redirect_to doctors_path, alert: @doctor.errors.full_messages.to_sentence }
+        format.html { redirect_to root_path, alert: @doctor.errors.full_messages.to_sentence }
       end
     end
   end
@@ -31,9 +19,9 @@ class DoctorsController < ApplicationController
   def update
     respond_to do |format|
       if @doctor.update(doctor_params)
-        format.html { redirect_to doctors_path, notice: 'Doutor atualizado com sucesso!' }
+        format.html { redirect_to root_path, notice: 'Doutor atualizado com sucesso!' }
       else
-        format.html { redirect_to doctors_path, alert: @doctor.errors.full_messages.to_sentence }
+        format.html { redirect_to root_path, alert: @doctor.errors.full_messages.to_sentence }
       end
     end
   end
@@ -41,9 +29,9 @@ class DoctorsController < ApplicationController
   def destroy
     respond_to do |format|
       if @doctor.destroy
-        format.html { redirect_to doctors_url, notice: 'Doutor deletado com sucesso!' }
+        format.html { redirect_to root_path, notice: 'Doutor deletado com sucesso!' }
       else
-        format.html { redirect_to doctors_path, alert: @doctor.errors.full_messages.to_sentence }
+        format.html { redirect_to root_path, alert: @doctor.errors.full_messages.to_sentence }
       end
     end
   end
