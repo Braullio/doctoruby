@@ -10,21 +10,21 @@
 
   <tbody>
     <% all_doctors.each do |doctor| %>
-    <tr>
-      <th scope='row'><%= doctor.name %></th>
-      <td><%= doctor.crm %></td>
-      <td><%= doctor.crm_uf %></td>
-      <td>
-        <a data-toggle="modal" data-target="#modal_doctor_edit" 
-           data-doctor-id="<%= doctor.id %>" data-doctor-name="<%= doctor.name %>" 
-           data-doctor-crm="<%= doctor.crm %>" data-doctor-crm-uf="<%= doctor.crm_uf %>" 
-           class="btn-sm btn-warning"><i class="fa fa-cog"></i> Editar</a>
+      <tr>
+        <th scope='row'><%= doctor.name %></th>
+        <td><%= doctor.crm %></td>
+        <td><%= doctor.crm_uf %></td>
+        <td>
+          <a data-toggle="modal" data-target="#modal_doctor_edit" 
+            data-doctor-id="<%= doctor.id %>" data-doctor-name="<%= doctor.name %>" 
+            data-doctor-crm="<%= doctor.crm %>" data-doctor-crm-uf="<%= doctor.crm_uf %>" 
+            class="btn-sm btn-warning"><i class="fa fa-cog"></i> Editar</a>
 
-        <%= link_to doctor, method: :delete, class: 'btn-sm btn-danger', data: { confirm: "Tem certeza para excluir o(a) Dr(a) #{doctor.name}?" } do %>
-          <i class="fas fa-trash-alt"></i> Excluir
-        <% end %>
-      </td>
-    </tr>
+          <%= link_to doctor, method: :delete, class: 'btn-sm btn-danger', data: { confirm: "Tem certeza para excluir o(a) Dr(a) #{doctor.name}?" } do %>
+            <i class="fas fa-trash-alt"></i> Excluir
+          <% end %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
