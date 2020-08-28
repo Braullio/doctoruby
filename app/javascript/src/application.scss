@@ -1,10 +1,11 @@
 @import "toastify-js/src/toastify.css";
-
-@import "./variables.scss";
 @import "bootstrap/scss/bootstrap";
 
+@import "./variables.scss";
+@import "./home.scss";
+
 body {
-  background-color: var(--color-white-bis);
+  background-color: var(--color-blue);
   font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   color: var(--color-gray-darker);
 }

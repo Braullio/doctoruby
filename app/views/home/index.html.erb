@@ -1,0 +1,45 @@
+<%= render 'partial/doctor_new' %>
+<%= render 'partial/doctor_edit' %>
+
+<div class='container-fluid mt-4 mb-4'>
+  <div class='card card-home border-info'>
+    <div class='card-header'>
+      <ul class='nav nav-tabs card-header-tabs pull-right' id='myTab' role='tablist'>
+        <li class='nav-item'>
+          <a class='nav-link disabled text-info font-weight-bold'><i class='fas fa-user-md fa-lg'></i> DoctoRuby</a>
+        </li>
+
+        <li class='nav-item'>
+          <a class='nav-link active' id='dashboard-tab' data-toggle='tab' href='#dashboard' role='tab' aria-controls='dashboard' aria-selected='true'>Dashboard</a>
+        </li>
+
+        <li class='nav-item'>
+          <a class='nav-link' id='doctor-tab' data-toggle='tab' href='#doctor' role='tab' aria-controls='doctor' aria-selected='false'>Doutores</a>
+        </li>
+
+        <li class='nav-item'>
+          <a class='nav-link' id='patient-tab' data-toggle='tab' href='#patient' role='tab' aria-controls='patient' aria-selected='false'>Pacientes</a>
+        </li>
+
+        <li class='nav-item'>
+          <a class='nav-link' id='appointment-tab' data-toggle='tab' href='#appointment' role='tab' aria-controls='appointment' aria-selected='false'>Consultas</a>
+        </li>
+      </ul>
+
+      <div class='right'>
+        <div class='btn btn-home btn-primary' data-toggle='modal' data-target='#modal_doctor_new'>Novo Doutor</div>
+        <div class='btn btn-home btn-primary' data-toggle='modal' data-target='#modal_doctor_new'>Novo Paciente</div>
+        <div class='btn btn-home btn-primary' data-toggle='modal' data-target='#modal_doctor_new'>Novo Agendamento</div>
+      </div>
+    </div>
+
+    <div class='card-body'>
+      <div class='tab-content' id='myTabContent'>
+        <div class='tab-pane fade show active' id='dashboard' role='tabpanel' aria-labelledby='dashboard-tab'><%= render 'partial/dashboard' %></div>
+        <div class='tab-pane fade' id='doctor' role='tabpanel' aria-labelledby='doctor-tab'><%= render 'partial/doctors' %></div>
+        <div class='tab-pane fade' id='patient' role='tabpanel' aria-labelledby='patient-tab'><%= render 'partial/patients' %></div>
+        <div class='tab-pane fade' id='appointment' role='tabpanel' aria-labelledby='appointment-tab'><%= render 'partial/appointments' %></div>
+      </div>
+    </div>
+  </div>
+</div>
