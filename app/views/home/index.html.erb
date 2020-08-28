@@ -1,4 +1,5 @@
 <%= render 'partial/doctor_new' %>
+<%= render 'partial/doctor_edit' %>
 
 <div class='container-fluid mt-4 mb-4'>
   <div class='card card-home border-info'>
@@ -27,8 +28,8 @@
 
       <div class='right'>
         <div class='btn btn-home btn-primary' data-toggle='modal' data-target='#modal_doctor_new'>Novo Doutor</div>
-        <button type='button' class='btn btn-home btn-primary'>Novo Paciente</button>
-        <button type='button' class='btn btn-home btn-primary'>Novo Agendamento</button>
+        <div class='btn btn-home btn-primary' data-toggle='modal' data-target='#modal_doctor_new'>Novo Paciente</div>
+        <div class='btn btn-home btn-primary' data-toggle='modal' data-target='#modal_doctor_new'>Novo Agendamento</div>
       </div>
     </div>
 
