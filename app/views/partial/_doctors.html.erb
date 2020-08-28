@@ -1,0 +1,25 @@
+<table class='table table-hover'>
+  <thead class='thead-dark'>
+    <tr>
+      <th scope='col' class='width-40'>Name</th>
+      <th scope='col' class='width-20'>CRM</th>
+      <th scope='col' class='width-20'>CRM UF</th>
+      <th scope='col' class='width-20'>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% all_doctors.each do |doctor| %>
+    <tr>
+      <th scope='row'><%= doctor.name %></th>
+      <td><%= doctor.crm %></td>
+      <td><%= doctor.crm_uf %></td>
+      <td>
+        <%= link_to 'Editar', doctor , class: 'btn-sm btn-warning' %>
+        <%= link_to 'Destroy', doctor, method: :delete, class: 'btn-sm btn-danger', 
+                    data: { confirm: "Tem certeza para excluir o(a) Dr(a) #{doctor.name}?" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
