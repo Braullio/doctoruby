@@ -8,4 +8,5 @@ class Patient < ApplicationRecord
   validates :birth_date, presence: true
   validates :cpf, presence: true, numericality: { only_integer: true }
   validates :doctor_id, presence: true
+  validates :cpf, uniqueness: true
 end
