@@ -43,10 +43,19 @@ class PatientsController < ApplicationController
   end
 
   def patient_find
-    params[:id].eql?('patient') ? Patient.find(params[:patient][:id]) : Patient.find(params[:id])
+    params[:id].eql?('patient') ? patient_params_update : Patient.find(params[:id])
   end
 
   def patient_params
     params.require(:patient).permit(:name, :birth_date, :cpf, :doctor_id)
+  end
+
+  def patient_params_update
+    params['patient'].merge!(birth_date: patient_params_birth_date)
+    Patient.find(params[:patient][:id])
+  end
+
+  def patient_params_birth_date
+    "#{params['Data de Nascimento']['(1i)']}-#{params['Data de Nascimento']['(2i)']}-#{params['Data de Nascimento']['(3i)']}".to_date
   end
 end
