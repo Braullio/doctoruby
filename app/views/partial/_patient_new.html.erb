@@ -12,20 +12,20 @@
       </div>
 
       <div class='modal-body'>
-
         <%= form_for patient_new do |f| %>
-        Nome
-        <%= f.text_field :name, class: 'form-control mb-2', autocomplete: 'off', required: true %>
-        CPF
-        <%= f.text_field :cpf, maxlength: 11, class: 'form-control mb-2', placeholder: '00000000000', autocomplete: 'off', required: true %>
-        Data de Nacimento
-        <%= f.date_select :birth_date, {order: %i[day month year], start_year: 1890, end_year: Date.today.year}, { class: 'custom-select mb-2' , autocomplete: 'off', required: true } %>
-        Doutor (CRM)
-        <%= f.select(:doctor_id, all_doctors.collect { |p| [ "#{ p.name } (#{ p.crm + p.crm_uf })", p.id ] }, {}, { class: 'custom-select' })  %>
+          Nome
+          <%= f.text_field :name, class: 'form-control mb-2', autocomplete: 'off', required: true %>
+          CPF
+          <%= f.text_field :cpf, maxlength: 11, class: 'form-control mb-2', placeholder: '00000000000', autocomplete: 'off', required: true %>
+          Data de Nacimento
+          <%= f.date_select :birth_date, { order: %i[day month year], start_year: 1890, end_year: Date.today.year }, 
+                            { class: 'custom-select mb-2' , autocomplete: 'off', required: true } %>
+          Doutor (CRM)
+          <%= f.select(:doctor_id, all_doctors.collect { |p| [ "#{ p.name } (#{ p.crm + p.crm_uf })", p.id ] }, {}, { class: 'custom-select' })  %>
 
-        <div class='actions mt-3'>
-          <%= f.submit 'Criar Paciente', class: 'btn btn-home btn-success float-right' %>
-        </div>
+          <div class='actions mt-3'>
+            <%= f.submit 'Criar Paciente', class: 'btn btn-home btn-success float-right' %>
+          </div>
         <% end %>
       </div>
     </div>
