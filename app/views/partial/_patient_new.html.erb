@@ -17,7 +17,7 @@
         Nome
         <%= f.text_field :name, class: 'form-control mb-2', autocomplete: 'off', required: true %>
         CPF
-        <%= f.text_field :cpf, maxlength: 11, class: 'form-control mb-2', autocomplete: 'off', required: true %>
+        <%= f.text_field :cpf, maxlength: 11, class: 'form-control mb-2', placeholder: '00000000000', autocomplete: 'off', required: true %>
         Data de Nacimento
         <%= f.date_select :birth_date, {order: %i[day month year], start_year: 1890, end_year: Date.today.year}, { class: 'custom-select mb-2' , autocomplete: 'off', required: true } %>
         Doutor (CRM)
