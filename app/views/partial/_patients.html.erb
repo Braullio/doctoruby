@@ -13,13 +13,13 @@
     <% all_patients.each do |patient| %>
     <tr>
       <th scope='row'><%= patient.name %></th>
-      <td><%= patient.birth_date %></td>
+      <td><%= patient.birth_date.strftime("%d/%m/%Y") %></td>
       <td><%= patient.cpf %></td>
       <td><%= "#{patient.doctor.name} (#{patient.doctor.crm + patient.doctor.crm_uf})" %></td>
       <td>
-        <a data-toggle="modal" data-target="#modal_doctor_edit" 
-           data-doctor-id="<%= patient.id %>" data-patient-name="<%= patient.name %>" 
-           data-doctor-birth-date="<%= patient.birth_date %>" data-patient-doctor-id="<%= patient.doctor_id %>" 
+        <a data-toggle="modal" data-target="#modal_patient_edit" 
+           data-patient-id="<%= patient.id %>" data-patient-name="<%= patient.name %>" data-patient-cpf="<%= patient.cpf %>" 
+           data-patient-birth-date="<%= patient.birth_date %>" data-patient-doctor-id="<%= patient.doctor_id %>" 
            class="btn-sm btn-warning"><i class="fa fa-cog"></i> Editar</a>
 
         <%= link_to patient, method: :delete, class: 'btn-sm btn-danger', data: { confirm: "Tem certeza para excluir o paciente #{patient.name}?" } do %>
