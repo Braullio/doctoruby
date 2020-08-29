@@ -14,6 +14,7 @@ pt-BR:
         name:   'Nome'
         crm:    'CRM' 
         crm_uf: 'CRM UF' 
+        patients: 'pacientes' 
 
       patient: 
         <<: *default
