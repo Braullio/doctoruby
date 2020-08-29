@@ -1,8 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      doctor: 'Doutor'
-      patient: 'Paciente'
+      doctor:      'Doutor'
+      patient:     'Paciente'
+      appointment: 'Agendamento'
 
     attributes:
       default: &default
@@ -11,9 +12,9 @@ pt-BR:
 
       doctor: 
         <<: *default
-        name:   'Nome'
-        crm:    'CRM' 
-        crm_uf: 'CRM UF' 
+        name:     'Nome'
+        crm:      'CRM' 
+        crm_uf:   'CRM UF' 
         patients: 'pacientes' 
 
       patient: 
@@ -21,3 +22,10 @@ pt-BR:
         name:       'Nome'
         birth_date: 'Data de Nascimento' 
         cpf:        'CPF' 
+
+      patient: 
+        <<: *default
+        starts_at:  'Começo da consulta' 
+        ends_at:    'Final da consulta' 
+        patient:    'paciente' 
+        doctor:     'doutor' 
