@@ -2,6 +2,8 @@
 
 # Interaction table doctor
 class Doctor < ApplicationRecord
+  has_many :patients
+
   validates :name, presence: true
   validates :crm, presence: true, numericality: { only_integer: true }
   validates :crm_uf, presence: true
