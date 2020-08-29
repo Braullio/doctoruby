@@ -1,0 +1,33 @@
+<div class='modal fade' id='modal_patient_new' tabindex='-1' role='dialog' aria-labelledby='modal_patient_new' aria-hidden='true'>
+  <div class='modal-dialog modal-ml' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>
+          Cadastrar Novo Doutor
+        </h5>
+
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+
+      <div class='modal-body'>
+
+        <%= form_for patient_new do |f| %>
+        Nome
+        <%= f.text_field :name, class: 'form-control mb-2', autocomplete: 'off', required: true %>
+        CPF
+        <%= f.text_field :cpf, maxlength: 11, class: 'form-control mb-2', autocomplete: 'off', required: true %>
+        Data de Nacimento
+        <%= f.date_select :birth_date, {order: %i[day month year], start_year: 1890, end_year: Date.today.year}, { class: 'custom-select mb-2' , autocomplete: 'off', required: true } %>
+        Doutor (CRM)
+        <%= f.select(:doctor_id, all_doctors.collect { |p| [ "#{ p.name } (#{ p.crm + p.crm_uf })", p.id ] }, {}, { class: 'custom-select' })  %>
+
+        <div class='actions mt-3'>
+          <%= f.submit 'Criar Paciente', class: 'btn btn-home btn-success float-right' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
