@@ -19,4 +19,5 @@ import 'bootstrap';
 import '../src/application.scss';
 import './flashMessages';
 import './modalDoctorAutocomplete';
+import './modalPatientAutocomplete';
 import './validateCpf';
