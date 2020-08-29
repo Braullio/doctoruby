@@ -1,0 +1,34 @@
+<div class='modal fade' id='modal_patient_edit' tabindex='-1' role='dialog' aria-labelledby='modal_patient_edit' aria-hidden='true'>
+  <div class='modal-dialog modal-ml' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>
+          Cadastrar Novo Doutor
+        </h5>
+
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+
+      <div class='modal-body'>
+        <%= form_tag(patient_path('patient'), method: 'patch') do %>
+          <%= hidden_field_tag 'patient[id]' %>
+          Nome
+          <%= text_field_tag 'Nome', nil, class: 'form-control mb-2', name: 'patient[name]', autocomplete: 'off', required: true %>
+          CPF
+          <%= text_field_tag 'CPF', nil, maxlength: 11, class: 'form-control mb-2', name: 'patient[cpf]', placeholder: '00000000000', autocomplete: 'off', required: true %>
+          Data de Nacimento
+          <%= date_select 'Data de Nascimento', nil,{ order: %i[day month year], start_year: 1890, end_year: Date.today.year }, 
+                          {  class: 'custom-select mb-2' , autocomplete: 'off', required: true } %>
+          Doutor (CRM)
+          <%= select_tag('Doutor', options_for_select(all_doctors.collect { |p| [ "#{ p.name } (#{ p.crm + p.crm_uf })", p.id ] }), name: 'patient[doctor_id]', class: 'custom-select')  %>
+
+          <div class='actions mt-3'>
+            <%= button_tag 'Atualizar Doutor', class: 'btn btn-home btn-success float-right' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

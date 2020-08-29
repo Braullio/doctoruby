@@ -1,20 +1,32 @@
-<table class="table">
+<table class='table table-hover'>
   <thead class='thead-dark'>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope='col' class='width-20'>Name</th>
+      <th scope='col' class='width-20'>Data de Nascimento</th>
+      <th scope='col' class='width-20'>CPF</th>
+      <th scope='col' class='width-20'>Doutor</th>
+      <th scope='col' class='width-20'>Ações</th>
     </tr>
   </thead>
+
   <tbody>
-    <% (1..14).each_with_index { |x, a| %>
+    <% all_patients.each do |patient| %>
     <tr>
-      <th scope="row"><%= a+1 %></th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope='row'><%= patient.name %></th>
+      <td><%= patient.birth_date.strftime("%d/%m/%Y") %></td>
+      <td><%= patient.cpf %></td>
+      <td><%= "#{patient.doctor.name} (#{patient.doctor.crm + patient.doctor.crm_uf})" %></td>
+      <td>
+        <a data-toggle="modal" data-target="#modal_patient_edit" 
+           data-patient-id="<%= patient.id %>" data-patient-name="<%= patient.name %>" data-patient-cpf="<%= patient.cpf %>" 
+           data-patient-birth-date="<%= patient.birth_date %>" data-patient-doctor-id="<%= patient.doctor_id %>" 
+           class="btn-sm btn-warning"><i class="fa fa-cog"></i> Editar</a>
+
+        <%= link_to patient, method: :delete, class: 'btn-sm btn-danger', data: { confirm: "Tem certeza para excluir o paciente #{patient.name}?" } do %>
+         <i class="fas fa-trash-alt"></i> Excluir
+        <% end %>
+      </td>
     </tr>
-    <% } %>
+    <% end %>
   </tbody>
 </table>

@@ -22,6 +22,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails-i18n', '~> 6.0'
 # A library for generating fake data such as names, addresses, and phone numbers.
 gem 'faker', '~> 1.6', '>= 1.6.6'
+gem 'cpf_faker'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

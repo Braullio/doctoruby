@@ -13,9 +13,7 @@ RSpec.describe DoctorsController, type: :controller do
         end
 
         it 'redirects to the created doctor' do
-          post :create, params: { doctor: { name: Faker::FunnyName.name,
-                                            crm: Faker::Number.number(7),
-                                            crm_uf: 'GO' } }
+          post :create, params: doctor_params
           expect(response).to redirect_to(root_path)
         end
       end

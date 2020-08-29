@@ -18,4 +18,6 @@ import 'bootstrap';
 
 import '../src/application.scss';
 import './flashMessages';
-import './modal_doctor_autocomplete';
+import './modalDoctorAutocomplete';
+import './modalPatientAutocomplete';
+import './validateCpf';

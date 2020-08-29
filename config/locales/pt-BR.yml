@@ -2,6 +2,7 @@ pt-BR:
   activerecord:
     models:
       doctor: 'Doutor'
+      patient: 'Paciente'
 
     attributes:
       default: &default
@@ -13,3 +14,10 @@ pt-BR:
         name:   'Nome'
         crm:    'CRM' 
         crm_uf: 'CRM UF' 
+        patients: 'pacientes' 
+
+      patient: 
+        <<: *default
+        name:       'Nome'
+        birth_date: 'Data de Nascimento' 
+        cpf:        'CPF' 
