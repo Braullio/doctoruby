@@ -16,11 +16,11 @@
           Dia
           <%= text_field 'day',nil, class: 'form-control not-click mb-2', name: 'day', value: @date.strftime("%d/%m/%Y") %>
           Hora
-          <%= text_field 'hour',nil, class: 'form-control not-click mb-2', name: 'hour' %>
+          <%= select_tag('hour', options_for_select(hours_for_select), name: 'hour', class: 'custom-select text-dark')  %>
           Doutor:
           <%= f.select(:doctor_id, options_for_select(all_doctors.pluck(:name, :id), @doctor_appointment.id) , {}, { class: 'custom-select text-dark not-click' })  %>
           Paciente
-          <%= f.select(:patient_id,  @patients_appointment.collect { |p| [ p.name, p.id ] }, {}, { class: 'custom-select' })  %>
+          <%= f.select(:patient_id, @patients_appointment.collect { |p| [ p.name, p.id ] }, {}, { class: 'custom-select' })  %>
 
           <div class='actions mt-3'>
             <%= f.submit 'Agendamento', class: 'btn btn-home btn-success float-right' %>
