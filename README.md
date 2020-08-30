@@ -2,11 +2,6 @@
 
 ## Preview
 ![Demo](demo/doctoruby.gif)
-
-#### Characteristics
-  - Boards ilimitados
-  - Lists ilimitadas
-  - Cards ilimitadas
  
 #### Mandatory Technologies
   - Ruby On Rails
