@@ -4,6 +4,8 @@
 class Patient < ApplicationRecord
   belongs_to :doctor
 
+  has_many :appointments
+
   validates :name, presence: true
   validates :birth_date, presence: true
   validates :cpf, presence: true, numericality: { only_integer: true }

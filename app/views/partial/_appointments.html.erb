@@ -1,20 +1,52 @@
-<table class="table">
-  <thead class='thead-dark'>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% (1..14).each_with_index { |x, a| %>
-    <tr>
-      <th scope="row"><%= a+1 %></th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <% } %>
-  </tbody>
+<table class='width-100'>
+  <tr>
+    <td class='width-30 align-top'>
+      <div class='mr-4'>
+        <%= form_tag(appointments_path('appointment'), method: 'get') do %>
+          Data da consulta
+          <%= date_select 'data', nil,{ selected: @date, order: %i[day month year], start_year: 2020, end_year: Date.today.year }, {  class: 'custom-select mb-3' , autocomplete: 'off', required: true } %>
+          Doutor
+          <%= select_tag('doutor', options_for_select(all_doctors.collect { |p| [ "#{ p.name } (#{ p.crm + p.crm_uf })", p.id ] }, @doctor_appointment.id), name: 'appointment[doctor_id]', class: 'mb-2 custom-select')  %>
+
+          <div class='actions mt-3'>
+            <%= button_tag 'Pesquisar', class: 'btn btn-outline-success btn-block' %>
+          </div>
+        <% end %>
+      </div>
+    </td>
+
+    <td class='width-70'>
+      <table class='table table-hover'>
+        <thead class='thead-dark'>
+          <tr>
+            <th scope="col">Hora</th>
+            <th scope="col" class='text-center'>00 min</th>
+            <th scope="col" class='text-center'>30 min</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% (9..18).each { |hora| %>
+          <% if hora.eql?(12) %>
+          <tr class="alert alert-dark">
+            <th scope="row"><%= hora %></th>
+            <td colspan="2" class='text-center'>ALMOÇO</td>
+          </tr>
+          <% else %>
+          <tr>
+            <th scope="row" class='align-middle'><%= hora %></th>
+            <td>
+              <%= search_appointment(hora, '00') %>
+            </td>
+
+            <td>
+              <%= search_appointment(hora, '30') %>
+            </td>
+          </tr>
+          <% end %>
+          <% } %>
+        </tbody>
+      </table>
+    </td>
+  </tr>
 </table>

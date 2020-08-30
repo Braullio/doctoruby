@@ -3,6 +3,7 @@
 # Interaction table doctor
 class Doctor < ApplicationRecord
   has_many :patients, dependent: :restrict_with_error
+  has_many :appointments
 
   validates :name, presence: true
   validates :crm, presence: true, numericality: { only_integer: true }

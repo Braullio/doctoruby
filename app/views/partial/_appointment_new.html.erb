@@ -1,0 +1,32 @@
+<div class='modal fade' id='modal_appointment_new' tabindex='-1' role='dialog' aria-labelledby='modal_appointment_new' aria-hidden='true'>
+  <div class='modal-dialog modal-ml' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>
+          Cadastrar Nova Consulta
+        </h5>
+
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+
+      <div class='modal-body'>
+        <%= form_for @appointment do |f| %>
+          Dia
+          <%= text_field 'day',nil, class: 'form-control not-click mb-2', name: 'day', value: @date.strftime("%d/%m/%Y") %>
+          Hora
+          <%= select_tag('hour', options_for_select(hours_for_select), name: 'hour', class: 'custom-select text-dark')  %>
+          Doutor:
+          <%= f.select(:doctor_id, options_for_select(all_doctors.pluck(:name, :id), @doctor_appointment.id) , {}, { class: 'custom-select text-dark not-click' })  %>
+          Paciente
+          <%= f.select(:patient_id, @patients_appointment.collect { |p| [ p.name, p.id ] }, {}, { class: 'custom-select' })  %>
+
+          <div class='actions mt-3'>
+            <%= f.submit 'Agendamento', class: 'btn btn-home btn-success float-right' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
