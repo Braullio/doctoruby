@@ -5,11 +5,11 @@ class AppointmentsController < ApplicationController
   before_action :appointment, only: %i[update destroy]
 
   def index
-    @appointments = Appointment.all
-    @appointment = Appointment.new
-    @doctor_appointment = Doctor.find(17)
+    @date = Date.today
+    @appointments = Appointment.where("starts_at like '%#{@date}%'").order(:starts_at)
+    @appointment  = Appointment.new
+    @doctor_appointment   = Doctor.find(17)
     @patients_appointment = @doctor_appointment.patients
-    @date = Date.today - 2.day
   end
 
   def create
@@ -27,7 +27,7 @@ class AppointmentsController < ApplicationController
   def update
     respond_to do |format|
       if @appointment.update(appointment_params)
-        format.html { redirect_to appointments_url, notice: 'Appointment atualizado com sucesso!' }
+        format.html { redirect_to appointments_url, notice: 'Agendamento atualizado com sucesso!' }
       else
         format.html { redirect_to appointments_url, alert: @appointment.errors.full_messages.to_sentence }
       end
@@ -48,7 +48,11 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment
-    @appointment = Appointment.find(params[:id])
+    @appointment = appointment_find
+  end
+
+  def appointment_find
+    params[:id].eql?('appointment') ? Appointment.find(params[:appointment][:id]) : Appointment.find(params[:id])
   end
 
   def appointment_params
