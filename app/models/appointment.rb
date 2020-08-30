@@ -11,5 +11,4 @@ class Appointment < ApplicationRecord
   validates :ends_at, presence: true
 
   validates :starts_at, uniqueness: { scope: :doctor_id, message: 'não pode repetir o horário!' }
-  validates :ends_at, uniqueness: { scope: :doctor_id, message: 'não pode repetir o horário!' }
 end
