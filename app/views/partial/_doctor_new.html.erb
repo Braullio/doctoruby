@@ -19,7 +19,7 @@
           CRM
           <%= f.text_field :crm, maxlength: 7, class: 'form-control mb-2', autocomplete: 'off', required: true %>
           CRM UF
-          <%= f.select(:crm_uf, all_uf_brazilian.collect { |p| [ p ] }, {}, { class: 'custom-select' })  %>
+          <%= f.select(:crm_uf, all_uf_brazilian.collect { |p| [ p ] }, {}, { class: 'custom-select' }) %>
 
         <div class='actions mt-3'>
           <%= f.submit 'Criar Doutor', class: 'btn btn-home btn-success float-right' %>
