@@ -3,7 +3,7 @@
     <td class='width-30 align-top'>
       <div class='mr-4'>
         Data da consulta
-        <%= date_select 'Data de Nascimento', nil,{ order: %i[day month year], start_year: 2020, end_year: Date.today.year }, 
+        <%= date_select 'Data de Nascimento', nil,{ selected: @date, order: %i[day month year], start_year: 2020, end_year: Date.today.year }, 
                           {  class: 'custom-select mb-3' , autocomplete: 'off', required: true } %>
 
         Doutor
@@ -35,15 +35,11 @@
           <tr>
             <th scope="row" class='align-middle'><%= hora %></th>
             <td>
-              <% if hora.eql?(13) %>
-              <div class='btn btn-outline-dark btn-block' data-toggle='modal' data-target='#modal_doctor_new'>Consulta do Alfredo</div>
-              <% else %>
-              <%= button_tag 'Agendar consulta', class: 'btn btn-outline-primary btn-block' %>
-              <% end %>
+              <%= search_appointment(hora, '00') %>
             </td>
 
             <td>
-              <%= button_tag 'Agendar consulta', class: 'btn btn-outline-primary btn-block' %>
+              <%= search_appointment(hora, '30') %>
             </td>
           </tr>
           <% end %>

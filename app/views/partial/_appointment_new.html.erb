@@ -13,12 +13,18 @@
 
       <div class='modal-body'>
         <%= form_for @appointment do |f| %>
+          Dia
+          <%= text_field 'day',nil, class: 'form-control not-click mb-2', name: 'day', value: @date.strftime("%d/%m/%Y") %>
+          Hora
+          <%= text_field 'hour',nil, class: 'form-control not-click mb-2', name: 'hour' %>
+          Doutor:
+          <%= f.select(:doctor_id, options_for_select(all_doctors.pluck(:name, :id), @doctor_appointment.id) , {}, { class: 'custom-select text-dark not-click' })  %>
           Paciente
-          <%= f.select(:crm_uf, all_uf_brazilian.collect { |p| [ p ] }, {}, { class: 'custom-select' })  %>
+          <%= f.select(:patient_id,  @patients_appointment.collect { |p| [ p.name, p.id ] }, {}, { class: 'custom-select' })  %>
 
-        <div class='actions mt-3'>
-          <%= f.submit 'Agendamento', class: 'btn btn-home btn-success float-right' %>
-        </div>
+          <div class='actions mt-3'>
+            <%= f.submit 'Agendamento', class: 'btn btn-home btn-success float-right' %>
+          </div>
         <% end %>
       </div>
     </div>
