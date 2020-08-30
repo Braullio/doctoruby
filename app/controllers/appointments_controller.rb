@@ -2,19 +2,12 @@
 
 # Controller to Appointments
 class AppointmentsController < ApplicationController
-  before_action :appointment, only: %i[show edit update destroy]
+  before_action :appointment, only: %i[update destroy]
 
   def index
     @appointments = Appointment.all
-  end
-
-  def show; end
-
-  def new
     @appointment = Appointment.new
   end
-
-  def edit; end
 
   def create
     @appointment = Appointment.new(appointment_params)
