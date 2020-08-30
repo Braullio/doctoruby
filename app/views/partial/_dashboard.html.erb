@@ -1,0 +1,26 @@
+<div class='container'>
+  <%= form_tag(root_path, method: 'get') do %>
+  <label class='align-middle mr-2'>Doutor</label>
+  <%= select_tag('doutor', 
+                   options_for_select(all_doctors.collect { |p| [ "#{ p.name } (#{ p.crm + p.crm_uf })", p.id ] }, @doctor_dashboard_id),
+                   prompt: 'TODOS',
+                   name: 'doctor_id', class: 'mb-2 custom-select width-50')  %>
+  <%= button_tag 'Pesquisar', class: 'btn btn-outline-success align-top' %>
+  <% end %>
+
+  <div class='row mt-4 text-center'>
+    <div class="card text-white bg-primary width-30 mr-5">
+      <div class="card-header">Quantidade de consultas que já foram realizadas</div>
+      <div class="card-body">
+        <h1 class="card-title"><i class="fas fa-notes-medical mr-1"></i> <%= @quantity_appointments %></h1>
+      </div>
+    </div>
+
+    <div class="card text-white bg-primary width-30">
+      <div class="card-header">Quantidade de pacientes diferentes atendidos no periodo</div>
+      <div class="card-body">
+        <h1 class="card-title"><i class="fas fa-user-injured mr-1"></i> <%= @quantity_patients %></h1>
+      </div>
+    </div>
+  </div>
+</div>
