@@ -23,7 +23,7 @@ pt-BR:
         birth_date: 'Data de Nascimento' 
         cpf:        'CPF' 
 
-      patient: 
+      appointment: 
         <<: *default
         starts_at:  'Começo da consulta' 
         ends_at:    'Final da consulta' 
