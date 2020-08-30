@@ -2,15 +2,16 @@
   <tr>
     <td class='width-30 align-top'>
       <div class='mr-4'>
-        Data da consulta
-        <%= date_select 'Data de Nascimento', nil,{ selected: @date, order: %i[day month year], start_year: 2020, end_year: Date.today.year }, 
-                          {  class: 'custom-select mb-3' , autocomplete: 'off', required: true } %>
+        <%= form_tag(appointments_path('appointment'), method: 'get') do %>
+          Data da consulta
+          <%= date_select 'data', nil,{ selected: @date, order: %i[day month year], start_year: 2020, end_year: Date.today.year }, {  class: 'custom-select mb-3' , autocomplete: 'off', required: true } %>
+          Doutor
+          <%= select_tag('doutor', options_for_select(all_doctors.collect { |p| [ "#{ p.name } (#{ p.crm + p.crm_uf })", p.id ] }, @doctor_appointment.id), name: 'appointment[doctor_id]', class: 'mb-2 custom-select')  %>
 
-        Doutor
-        <%= select_tag('Doutor', options_for_select(all_doctors.collect { |p| [ "#{ p.name } (#{ p.crm + p.crm_uf })", p.id ] }), name: 'patient[doctor_id]', class: 'mb-2 custom-select')  %>
-        <div class='actions mt-3'>
-          <%= button_tag 'Pesquisar', class: 'btn btn-outline-success btn-block' %>
-        </div>
+          <div class='actions mt-3'>
+            <%= button_tag 'Pesquisar', class: 'btn btn-outline-success btn-block' %>
+          </div>
+        <% end %>
       </div>
     </td>
 
