@@ -1,0 +1,40 @@
+<div class='modal fade' id='modal_appointment_edit' tabindex='-1' role='dialog' aria-labelledby='modal_appointment_edit' aria-hidden='true'>
+  <div class='modal-dialog modal-ml' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>
+          Editar Consulta
+        </h5>
+
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+
+      <div class='modal-body'>
+        <%= form_tag(appointment_path('appointment'), method: 'patch') do %>
+          <%= hidden_field_tag 'appointment[id]' %>
+          Dia
+          <%= text_field 'day',nil, class: 'form-control not-click mb-2', name: 'day', id: 'day', value: @date.strftime("%d/%m/%Y") %>
+          Hora
+
+          <%= select_tag('hour', options_for_select(hours_for_select), name: 'hour', id: 'hour_edit', class: 'custom-select text-dark')  %>
+
+          Doutor:
+          <%= select_tag('Doutor', options_for_select(all_doctors.pluck(:name, :id), @doctor_appointment.id), name: 'appointment[doctor_id]', class: 'custom-select text-dark not-click')  %>
+          Paciente
+          <%= select_tag('Patient', options_for_select(@patients_appointment.pluck(:name, :id)), name: 'appointment[patient_id]', class: 'custom-select text-dark not-click')  %>
+
+          <div class='actions mt-3'>
+            <%= button_tag 'Atualizar consulta', class: 'btn btn-home btn-success float-right' %>
+          </div>
+        <% end %>
+
+        <%= form_tag(appointment_path('appointment'), method: 'delete') do %>
+            <%= hidden_field_tag 'appointment[id]' %>
+            <%= button_tag 'Excluir', class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
