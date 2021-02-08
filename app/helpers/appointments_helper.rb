@@ -10,6 +10,7 @@ module AppointmentsHelper
   def btn_free(_hour, _min)
     link_to '#', data: {toggle: 'modal', target: '#modal_appointment_new', hour: _hour, min: _min}, class: 'btn btn-outline-primary btn-block' do
       'Agendar consulta'
+
     end
   end
 
